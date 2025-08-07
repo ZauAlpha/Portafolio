@@ -1,0 +1,131 @@
+---
+---
+<header class="bg-neutral-900 flex justify-center items-center gap-20 py-5 fixed top-0 w-full z-50">
+    <div class="nav-item w-30 flex flex-col text-my-blue hover:text-my-green" data-section="sobre-mi">
+        <a href="#sobre-mi" class="w-full text-3xl text-center text-inherit font-bebas">
+            Sobre Mí
+        </a>
+        <div class="nav-indicator w-full h-1 bg-current rounded-full opacity-0 transition-opacity duration-300"></div>
+    </div> 
+    
+    <div class="nav-item w-30 flex flex-col text-my-blue hover:text-my-green" data-section="mi-trabajo">
+        <a href="#mi-trabajo" class="w-full text-3xl text-center text-inherit font-bebas">
+            Mi trabajo
+        </a>
+        <div class="nav-indicator w-full h-1 bg-current rounded-full opacity-0 transition-opacity duration-300"></div>
+    </div>
+    
+    <div class="nav-item w-30 flex flex-col text-my-blue hover:text-my-green" data-section="contacto">
+        <a href="/contacto" class="w-full text-3xl text-center text-inherit font-bebas">
+            Contacto
+        </a>
+        <div class="nav-indicator w-full h-1 bg-current rounded-full opacity-0 transition-opacity duration-300"></div>
+    </div>
+    
+    <div class="nav-item w-30 flex flex-col text-my-blue hover:text-my-green" data-section="blog">
+        <a href="#blog" class="w-full text-3xl text-center text-inherit font-bebas">
+            Blog
+        </a>
+        <div class="nav-indicator w-full h-1 bg-current rounded-full opacity-0 transition-opacity duration-300"></div>
+    </div>
+</header>
+
+<style>
+    .nav-item.active {
+        color: var(--my-green, #10b981);
+    }
+    
+    .nav-item.active .nav-indicator {
+        opacity: 1 !important;
+        background-color: currentColor;
+    }
+    
+    .nav-indicator {
+        transition: opacity 0.3s ease;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    /* Ajuste para el header fijo */
+    body {
+        padding-top: 80px; /* Ajusta según la altura de tu header */
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('section[id]');
+        
+        // Configuración del Intersection Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -80% 0px', // Ajusta estos valores según necesites
+            threshold: 0
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const sectionId = entry.target.id;
+                const navItem = document.querySelector(`[data-section="${sectionId}"]`);
+                
+                if (entry.isIntersecting) {
+                    // Remover clase active de todos los elementos
+                    navItems.forEach(item => item.classList.remove('active'));
+                    // Añadir clase active al elemento actual
+                    if (navItem) {
+                        navItem.classList.add('active');
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Observar todas las secciones
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Navegación suave para enlaces internos
+        navItems.forEach(item => {
+            const link = item.querySelector('a');
+            if (!link) return;
+            
+            const href = link.getAttribute('href');
+            
+            // Solo para enlaces internos (que empiecen con #)
+            if (href && href.startsWith('#')) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetSection = document.querySelector(href) as HTMLElement;
+                    const header = document.querySelector('header') as HTMLElement;
+                    
+                    if (targetSection && header) {
+                        const headerHeight = header.offsetHeight;
+                        const targetPosition = targetSection.offsetTop - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+        });
+        
+        // Activar el primer elemento por defecto si no hay ninguno activo
+        const checkInitialSection = () => {
+            const activeItem = document.querySelector('.nav-item.active');
+            if (!activeItem && sections.length > 0) {
+                const firstNavItem = document.querySelector(`[data-section="${sections[0].id}"]`);
+                if (firstNavItem) {
+                    firstNavItem.classList.add('active');
+                }
+            }
+        };
+        
+        // Ejecutar después de un pequeño delay para permitir que el observer se inicialice
+        setTimeout(checkInitialSection, 100);
+    });
+</script>

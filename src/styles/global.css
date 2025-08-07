@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:opsz,wght@14..32,100..900&family=Source+Code+Pro:wght@200..900&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --font-bebas: "Bebas Neue", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-source: "Source Code Pro", monospace;
+  --color-my-green: oklch(0.8716 0.275 143.36);
+  --color-my-blue: oklch(0.6623 0.179 248.8);
+  --animate-typewriter: typewriter var(--duration, 3.5s)
+      steps(var(--steps, 30), end),
+    blink-caret 0.5s step-end infinite;
+
+  @keyframes typewriter {
+    from {
+      width: 0;
+    }
+    to {
+      width: var(--typewriter-width, 100%);
+    }
+  }
+
+  @keyframes blink-caret {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: oklch(0.8716 0.275 143.36);
+    }
+  }
+}

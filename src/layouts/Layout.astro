@@ -1,3 +1,13 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import bluebubble from '../assets/bluebubble.svg'
+import foto from '../assets/foto.png';
+
+
+
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -6,17 +16,56 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
+		<script type="module">
+			 import { startTypewriterLoop } from '../src/utils/script';
+			 document.addEventListener("DOMContentLoaded", () => {
+				const phrases = [
+					"Backend Developer",
+      				"Mexican", 
+      				"Common good worker",
+      				"Computer Systems engineer",
+      				"Java developer",
+	  				"Spring boot developer"
+				];
+    
+    // Iniciar el loop automático
+    startTypewriterLoop(phrases, 4000); // 2 segundos de pausa entre frases
+  });
+		</script>
 	</head>
-	<body>
-		<slot />
+	<Header></Header>
+	<body class="bg-neutral-800">
+		<section id="sobre-mi">
+		<h1 class="font-bebas text-7xl text-transparent bg-clip-text bg-gradient-to-l w-full from-my-blue to-[#2FF7FF] text-center mt-18 " >Zauriel Jesús Espejel Cervantes</h1>
+		<div class="flex flex-row justify-between mx-auto lg:mx-40">
+			<div class="mt-20 hidden lg:flex justify-center items-center relative w-fit">
+    			<img class="w-96 blur-3xl" src={bluebubble.src} alt="Blue blured bubble">
+    			<img src={foto.src} alt="Zauriel Profile Foto" class="absolute w-56 mask-b-from-30% mask-radial-[45%_90%] mask-radial-from-70%">
+			</div>
+			<div class="self-center">
+  				<div class="w-[40rem] min-w-[40rem] overflow-hidden">
+    				<h1 id="typewriter" class="text-3xl font-source h-12 leading-12 text-my-green font-light border-r-2 pr-4 whitespace-nowrap tracking-widest overflow-hidden animate-typewriter">Backend Developer</h1>
+  				</div>
+			</div>
+			<noscript>
+				<h1>Mexican</h1>
+				<h1>From Puebla</h1>
+				<h1>Common good worker</h1>
+				<h1>Java Developer</h1>
+				<h1>Spring boot developer</h1>
+			</noscript>
+		</div>
+		<p class="text-white font-source lg:mx-28 mx-10">
+			Soy Zauriel, pero me puedes llamar Zau siempre me a interesado la tecnología para solucionar los problemas de las personas y hacer un mejor mundo y un México mejor. Me considero una persona con la capacidad para liderar y coordinar equipos multidisciplinarios, en este espacio puedes encontrar información sobre mí, opiniones, experiencias y conocimientos en mi blog.
+			<br>
+			<br>
+			Mi zona de interés incluye desarrollo backend, gestión de proyectos y computo en la nube.
+			<br>
+			<br>
+			Me gradué de Ingeniería en sistemas computacionales en la Universidad de las Américas Puebla en 2025 y ahora me desempeño como desarrollador de software enfocado en backend.
+		</p>
+		</section>
 	</body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+
