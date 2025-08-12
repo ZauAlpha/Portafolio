@@ -1,4 +1,5 @@
 ---
+import Image from "astro/components/Image.astro";
 import bluebubble from "../assets/bluebubble.svg";
 import foto from "../assets/foto.png";
 ---
@@ -93,9 +94,9 @@ import foto from "../assets/foto.png";
 >
   <!-- Imagen -->
   <div class="mt-20 hidden lg:flex justify-center items-center relative w-fit">
-    <img class="w-96 blur-3xl" src={bluebubble.src} alt="Blue blured bubble" />
-    <img
-      src={foto.src}
+    <Image class="w-96 blur-3xl" src={bluebubble} alt="Blue blured bubble" />
+    <Image
+      src={foto}
       alt="Zauriel Profile Foto"
       class="absolute w-56 mask-b-from-30% mask-radial-[45%_90%] mask-radial-from-70%"
     />
@@ -120,9 +121,27 @@ import foto from "../assets/foto.png";
   <div class="flex flex-col gap-4 self-center items-center">
     <button
       id="email-button"
-      class="h-16 w-fit rounded-full font-source p-4 cursor-pointer bg-my-green shadow-md shadow-neutral-950 hover:scale-105 transform transition-all duration-200 ease-in-out active:bg-[#27d433] active:scale-95 flex flex-row"
+      class="h-16 w-fit rounded-full font-source p-4 cursor-pointer bg-my-green shadow-md shadow-neutral-950 hover:scale-105 transform transition-all duration-200 ease-in-out active:bg-[#27d433] active:scale-95 flex flex-row items-center active:shadow-sm"
     >
-      <img src="src/assets/email_icon.svg" alt="Email icon" />
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 22 22"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="self-center"
+      >
+        <g clip-path="url(#clip0_222_2)">
+          <path
+            d="M17.4167 0.916667H4.58333C3.3682 0.918122 2.20326 1.40148 1.34403 2.2607C0.484808 3.11993 0.00145554 4.28487 0 5.5L0 16.5C0.00145554 17.7151 0.484808 18.8801 1.34403 19.7393C2.20326 20.5985 3.3682 21.0819 4.58333 21.0833H17.4167C18.6318 21.0819 19.7967 20.5985 20.656 19.7393C21.5152 18.8801 21.9985 17.7151 22 16.5V5.5C21.9985 4.28487 21.5152 3.11993 20.656 2.2607C19.7967 1.40148 18.6318 0.918122 17.4167 0.916667ZM4.58333 2.75H17.4167C17.9656 2.75108 18.5016 2.91639 18.9557 3.22465C19.4099 3.53292 19.7614 3.97003 19.965 4.47975L12.9452 11.5005C12.4286 12.015 11.7291 12.3039 11 12.3039C10.2709 12.3039 9.57144 12.015 9.05483 11.5005L2.035 4.47975C2.23864 3.97003 2.59015 3.53292 3.04429 3.22465C3.49844 2.91639 4.03445 2.75108 4.58333 2.75ZM17.4167 19.25H4.58333C3.85399 19.25 3.15451 18.9603 2.63879 18.4445C2.12306 17.9288 1.83333 17.2293 1.83333 16.5V6.875L7.75867 12.7967C8.61908 13.6549 9.78474 14.1369 11 14.1369C12.2153 14.1369 13.3809 13.6549 14.2413 12.7967L20.1667 6.875V16.5C20.1667 17.2293 19.8769 17.9288 19.3612 18.4445C18.8455 18.9603 18.146 19.25 17.4167 19.25Z"
+            fill="black"></path>
+        </g>
+        <defs>
+          <clipPath id="clip0_222_2">
+            <rect width="22" height="22" fill="white"></rect>
+          </clipPath>
+        </defs>
+      </svg>
       <span class="ml-2">zaurielec@gmail.com</span>
     </button>
     <div class="flex items-center gap-2">

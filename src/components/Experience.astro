@@ -1,9 +1,9 @@
 ---
-import foto from "../assets/blackshiip.png";
+import { Image } from "astro:assets";
 interface Props {
   enterpriseName: string;
   description: string;
-  image: string;
+  image: ImageMetadata;
   date: string;
   location: string;
   responsibilities: string[];
@@ -22,7 +22,7 @@ const props = Astro.props as Props;
       <!-- Logo/Imagen -->
       <div class="flex-shrink-0 mx-auto sm:mx-0">
         <!-- Placeholder para logo - reemplaza con tu imagen -->
-        <img
+        <Image
           src={props.image}
           alt="Logo de la empresa"
           class="size-16 sm:size-20"

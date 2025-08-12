@@ -22,3 +22,28 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+# VSCode settings
+.vscode/
+
+# local history or backup files
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# test coverage
+coverage/
+.nyc_output/
+
+# local build artifacts
+*.log
+
+# lock files (optional, if you don't want to commit them)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
