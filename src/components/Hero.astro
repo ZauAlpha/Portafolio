@@ -1,0 +1,177 @@
+---
+import bluebubble from "../assets/bluebubble.svg";
+import foto from "../assets/foto.png";
+---
+
+<script type="module">
+  import { startTypewriterLoop } from "../src/utils/script";
+  document.addEventListener("DOMContentLoaded", () => {
+    const phrases = [
+      "Backend Developer",
+      "Mexican",
+      "Common good worker",
+      "Computer Systems engineer",
+      "Java developer",
+      "Spring boot developer",
+    ];
+
+    // Iniciar el loop automático
+    startTypewriterLoop(phrases, 4000); // 2 segundos de pausa entre frases
+    document.getElementById("email-button").addEventListener("click", () => {
+      navigator.clipboard.writeText("zaurielec@gmail.com");
+      const toast = document.getElementById("toast");
+      toast.classList.add("show");
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 3000);
+    });
+  });
+</script>
+<style>
+  #toast.show {
+    display: block;
+    -webkit-animation:
+      fadein 0.5s,
+      fadeout 0.5s 2.5s;
+    animation:
+      fadein 0.5s,
+      fadeout 0.5s 2.5s;
+  }
+
+  @-webkit-keyframes fadein {
+    from {
+      bottom: 0;
+      opacity: 0;
+    }
+    to {
+      bottom: 30px;
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadein {
+    from {
+      bottom: 0;
+      opacity: 0;
+    }
+    to {
+      bottom: 30px;
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes fadeout {
+    from {
+      bottom: 30px;
+      opacity: 1;
+    }
+    to {
+      bottom: 0;
+      opacity: 0;
+    }
+  }
+
+  @keyframes fadeout {
+    from {
+      bottom: 30px;
+      opacity: 1;
+    }
+    to {
+      bottom: 0;
+      opacity: 0;
+    }
+  }
+</style>
+
+<h1
+  class="font-bebas text-7xl text-transparent bg-clip-text bg-gradient-to-l w-full from-my-blue to-[#2FF7FF] text-center mt-18"
+>
+  Zauriel Jesús Espejel Cervantes
+</h1>
+<div
+  class="flex flex-col lg:flex-row justify-between mx-auto lg:mx-40 gap-8 relative"
+>
+  <!-- Imagen -->
+  <div class="mt-20 hidden lg:flex justify-center items-center relative w-fit">
+    <img class="w-96 blur-3xl" src={bluebubble.src} alt="Blue blured bubble" />
+    <img
+      src={foto.src}
+      alt="Zauriel Profile Foto"
+      class="absolute w-56 mask-b-from-30% mask-radial-[45%_90%] mask-radial-from-70%"
+    />
+  </div>
+
+  <!-- Typewriter -->
+  <div
+    class="self-center px-4 lg:pl-40 lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2"
+  >
+    <div
+      class="w-full max-w-[90vw] sm:max-w-[30rem] lg:max-w-[40rem] overflow-hidden"
+    >
+      <h1
+        id="typewriter"
+        class="text-xl sm:text-2xl lg:text-3xl font-source h-8 sm:h-10 lg:h-12 leading-8 sm:leading-10 lg:leading-12 text-my-green font-light border-r-2 pr-4 whitespace-nowrap tracking-widest overflow-hidden animate-typewriter"
+      >
+        Backend Developer
+      </h1>
+    </div>
+  </div>
+  <!-- Botones en un div -->
+  <div class="flex flex-col gap-4 self-center items-center">
+    <button
+      id="email-button"
+      class="h-16 w-fit rounded-full font-source p-4 cursor-pointer bg-my-green shadow-md shadow-neutral-950 hover:scale-105 transform transition-all duration-200 ease-in-out active:bg-[#27d433] active:scale-95 flex flex-row"
+    >
+      <img src="src/assets/email_icon.svg" alt="Email icon" />
+      <span class="ml-2">zaurielec@gmail.com</span>
+    </button>
+    <div class="flex items-center gap-2">
+      <a
+        href="/public/cvZJEC.pdf"
+        class="size-12 rounded-2xl font-bold font-source text-center block content-center bg-[#2FF] cursor-pointer shadow-md shadow-neutral-950 hover:scale-105 transform transition-all duration-200 ease-in-out active:bg-[#17aaaa] active:scale-95 active:shadow-none"
+        target="_blank"
+        rel="noopener noreferrer">CV</a
+      >
+      <a
+        href="https://www.linkedin.com/in/zauriel-jesus-espejel-cervantes-301641206/"
+        class="size-12 rounded-2xl font-inter text-2xl bg-transparent text-[#2FF] border text-center block content-center cursor-pointer shadow-md shadow-neutral-950 hover:scale-105 transform transition-all duration-200 ease-in-out active:bg-[#0b5555] active:shadow-none active:scale-95"
+        target="_blank"
+        rel="noopener noreferrer">in</a
+      >
+      <a
+        href="https://www.github.com/zaualpha"
+        class="size-12 rounded-2xl font-inter text-2xl bg-transparent text-[#2FF] border text-center block content-center cursor-pointer shadow-md shadow-neutral-950 hover:scale-105 transform transition-all duration-200 ease-in-out active:bg-[#0b5555] active:shadow-none active:scale-95"
+        target="_blank"
+        rel="noopener noreferrer"
+        ><svg
+          width="47"
+          height="44"
+          viewBox="0 0 47 44"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18.7667 34.7567C14.1524 36.2997 10.3071 34.7567 8 30"
+            stroke="#2FF7FF"
+            stroke-width="1.5"
+            stroke-linecap="square"
+            stroke-linejoin="round"></path>
+          <path
+            d="M18.7668 36.6667V32.3439C18.7668 31.5461 19.0143 30.8528 19.4133 30.2265C19.687 29.7968 19.4996 29.1872 19.0051 29.0525C14.9095 27.9371 12.0376 26.1436 12.0376 20.1947C12.0376 18.6481 12.5491 17.1941 13.4482 15.9285C13.6719 15.6136 13.7838 15.4561 13.8107 15.3135C13.8376 15.1708 13.7908 14.9847 13.6973 14.6124C13.3167 13.0972 13.3413 11.4883 13.9126 10.0376C13.9126 10.0376 15.0932 9.65656 17.7802 11.3196C18.3937 11.6993 18.7005 11.8891 18.9707 11.9316C19.2408 11.9741 19.602 11.8851 20.3243 11.7072C21.3121 11.4639 22.33 11.3333 23.4772 11.3333C24.6244 11.3333 25.6422 11.4639 26.6301 11.7072C27.3524 11.8851 27.7136 11.9741 27.9837 11.9316C28.2539 11.8891 28.5607 11.6993 29.1741 11.3196C31.8612 9.65656 33.0417 10.0376 33.0417 10.0376C33.6131 11.4883 33.6377 13.0972 33.2571 14.6124C33.1635 14.9847 33.1167 15.1708 33.1436 15.3135C33.1705 15.4561 33.2824 15.6136 33.5062 15.9285C34.4052 17.1941 34.9168 18.6481 34.9168 20.1947C34.9168 26.1436 32.0449 27.9371 27.9493 29.0525C27.4548 29.1872 27.2673 29.7968 27.5411 30.2265C27.9401 30.8528 28.1876 31.5461 28.1876 32.3439V36.6667"
+            stroke="#2FF7FF"
+            stroke-width="1.5"
+            stroke-linecap="square"
+            stroke-linejoin="round"></path>
+          <path d="M19 37H28.5" stroke="#2FF7FF"></path>
+        </svg></a
+      >
+    </div>
+  </div>
+</div>
+
+<div
+  id="toast"
+  class="min-w-sm bg-black text-white fixed bottom-5 right-5 p-4 rounded-lg shadow-lg shadow-gray-900 transition-transform transform hidden"
+>
+  Email copied to clipboard!
+</div>

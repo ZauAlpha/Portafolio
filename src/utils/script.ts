@@ -2,49 +2,27 @@ export function changeText(newText: string): void {
   const typewriterElement = document.getElementById("typewriter");
   if (!typewriterElement) return;
 
-  // 1) Obtenemos estilos computados
-  const styles = getComputedStyle(typewriterElement);
-  const originalFontSize = parseFloat(styles.fontSize); // en px
-
-  // 2) Medimos ancho del texto al font-size original
-  const canvas = document.createElement("canvas");
-  const context = canvas.getContext("2d");
-  if (!context) return;
-  context.font = `${styles.fontSize} ${styles.fontFamily}`;
-  const textWidth = context.measureText(newText).width;
-
-  // 3) Medimos ancho del contenedor padre
-  const parent = typewriterElement.parentElement;
-  const parentWidth = parent ? parent.getBoundingClientRect().width : textWidth;
-
-  // 4) Calculamos factor de escala si hace falta
-  let scale = 1;
-  if (textWidth > parentWidth) {
-    scale = parentWidth / textWidth;
-  }
-
-  // 5) Ancho que usaremos en la animación (width final)
-  const animationWidth = textWidth * scale;
-
-  // 6) Duración y pasos de la animación
   const charCount = newText.length;
   const duration = Math.max(1, charCount * 0.08);
 
-  // 7) Clonamos el elemento para reiniciar la animación
+  // Calcular ancho real del texto
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
+  if (!context) return;
+
+  const styles = getComputedStyle(typewriterElement);
+  context.font = `${styles.fontSize} ${styles.fontFamily}`;
+  const textWidth = context.measureText(newText).width;
+
   const newElement = typewriterElement.cloneNode(true) as HTMLElement;
   newElement.id = "typewriter";
 
-  // 8) Ajustamos font-size escalado (si scale < 1)
-  newElement.style.fontSize = `${originalFontSize * scale}px`;
-
-  // 9) Inyectamos variables CSS y ancho inline
-  newElement.style.setProperty("--typewriter-width", `${animationWidth}px`);
+  // Establecer el ancho real del texto para la animación
+  newElement.style.setProperty("--typewriter-width", `${textWidth}px`);
   newElement.style.setProperty("--steps", charCount.toString());
   newElement.style.setProperty("--duration", `${duration}s`);
-  newElement.style.width = `${animationWidth}px`;
-
-  // 10) Ponemos el nuevo texto y reemplazamos en el DOM
   newElement.textContent = newText;
+
   typewriterElement.parentNode?.replaceChild(newElement, typewriterElement);
 }
 
