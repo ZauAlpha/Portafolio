@@ -18,14 +18,19 @@ import foto from "../assets/foto.png";
 
     // Iniciar el loop automático
     startTypewriterLoop(phrases, 4000); // 2 segundos de pausa entre frases
-    document.getElementById("email-button").addEventListener("click", () => {
-      navigator.clipboard.writeText("zaurielec@gmail.com");
-      const toast = document.getElementById("toast");
-      toast.classList.add("show");
-      setTimeout(() => {
-        toast.classList.remove("show");
-      }, 3000);
-    });
+    const emailButton = document.getElementById("email-button");
+    if (emailButton) {
+      emailButton.addEventListener("click", () => {
+        navigator.clipboard.writeText("zaurielec@gmail.com");
+        const toast = document.getElementById("toast");
+        if (toast) {
+          toast.classList.add("show");
+          setTimeout(() => {
+            toast.classList.remove("show");
+          }, 3000);
+        }
+      });
+    }
   });
 </script>
 <style>
@@ -85,7 +90,7 @@ import foto from "../assets/foto.png";
 </style>
 
 <h1
-  class="font-bebas text-7xl text-transparent bg-clip-text bg-gradient-to-l w-full from-my-blue to-[#2FF7FF] text-center m-0 lg:mt-24"
+  class="font-bebas text-7xl text-transparent bg-clip-text bg-gradient-to-l w-full from-my-blue to-[#2FF7FF] text-center mt-24"
 >
   Zauriel Jesús Espejel Cervantes
 </h1>
