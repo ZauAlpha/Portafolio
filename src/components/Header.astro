@@ -1,131 +1,363 @@
 ---
+
 ---
-<header class="bg-neutral-900 flex justify-center items-center gap-20 py-5 fixed top-0 w-full z-50">
-    <div class="nav-item w-30 flex flex-col text-my-blue hover:text-my-green" data-section="sobre-mi">
-        <a href="#sobre-mi" class="w-full text-3xl text-center text-inherit font-bebas">
-            Sobre Mí
-        </a>
-        <div class="nav-indicator w-full h-1 bg-current rounded-full opacity-0 transition-opacity duration-300"></div>
-    </div> 
-    
-    <div class="nav-item w-30 flex flex-col text-my-blue hover:text-my-green" data-section="experience">
-        <a href="#experience" class="w-full text-3xl text-center text-inherit font-bebas">
-            Mi trabajo
-        </a>
-        <div class="nav-indicator w-full h-1 bg-current rounded-full opacity-0 transition-opacity duration-300"></div>
+
+<header
+  class="bg-neutral-900 fixed top-0 w-full z-50 transition-all duration-300"
+>
+  <!-- Desktop Navigation -->
+  <div class="hidden lg:flex justify-center items-center gap-20 py-5">
+    <div
+      class="nav-item w-30 flex flex-col text-my-blue hover:text-my-green"
+      data-section="sobre-mi"
+    >
+      <a
+        href="#sobre-mi"
+        class="w-full text-3xl text-center text-inherit font-bebas"
+      >
+        Sobre Mí
+      </a>
+      <div
+        class="nav-indicator w-full h-1 bg-current rounded-full opacity-0 transition-opacity duration-300"
+      >
+      </div>
     </div>
-    
-    <div class="nav-item w-30 flex flex-col text-my-blue hover:text-my-green" data-section="contacto">
-        <a href="/contacto" class="w-full text-3xl text-center text-inherit font-bebas">
-            Contacto
-        </a>
-        <div class="nav-indicator w-full h-1 bg-current rounded-full opacity-0 transition-opacity duration-300"></div>
+
+    <div
+      class="nav-item w-30 flex flex-col text-my-blue hover:text-my-green"
+      data-section="experience"
+    >
+      <a
+        href="#experience"
+        class="w-full text-3xl text-center text-inherit font-bebas"
+      >
+        Mi trabajo
+      </a>
+      <div
+        class="nav-indicator w-full h-1 bg-current rounded-full opacity-0 transition-opacity duration-300"
+      >
+      </div>
     </div>
-    
-    <div class="nav-item w-30 flex flex-col text-my-blue hover:text-my-green" data-section="blog">
-        <a href="#blog" class="w-full text-3xl text-center text-inherit font-bebas">
-            Blog
-        </a>
-        <div class="nav-indicator w-full h-1 bg-current rounded-full opacity-0 transition-opacity duration-300"></div>
+
+    <div
+      class="nav-item w-30 flex flex-col text-my-blue hover:text-my-green"
+      data-section="contacto"
+    >
+      <a
+        href="/contacto"
+        class="w-full text-3xl text-center text-inherit font-bebas"
+      >
+        Contacto
+      </a>
+      <div
+        class="nav-indicator w-full h-1 bg-current rounded-full opacity-0 transition-opacity duration-300"
+      >
+      </div>
     </div>
+
+    <div
+      class="nav-item w-30 flex flex-col text-my-blue hover:text-my-green"
+      data-section="blog"
+    >
+      <a
+        href="#blog"
+        class="w-full text-3xl text-center text-inherit font-bebas"
+      >
+        Blog
+      </a>
+      <div
+        class="nav-indicator w-full h-1 bg-current rounded-full opacity-0 transition-opacity duration-300"
+      >
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div class="lg:hidden flex justify-between items-center px-6 py-4">
+    <!-- Logo/Brand -->
+    <div class="text-my-blue font-bebas text-2xl">Mi Portfolio</div>
+
+    <!-- Hamburger Button -->
+    <button
+      id="hamburger-btn"
+      class="z-50 text-my-blue hover:text-my-green focus:outline-none transition-colors duration-300"
+    >
+      <div class="hamburger-icon">
+        <span
+          class="hamburger-line block w-6 h-0.5 bg-current mb-1 transition-all duration-300"
+        ></span>
+        <span
+          class="hamburger-line block w-6 h-0.5 bg-current mb-1 transition-all duration-300"
+        ></span>
+        <span
+          class="hamburger-line block w-6 h-0.5 bg-current transition-all duration-300"
+        ></span>
+      </div>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div
+    id="mobile-menu"
+    class="lg:hidden fixed inset-0 bg-neutral-900 bg-opacity-95 backdrop-blur-sm transform translate-x-full transition-transform duration-300 ease-in-out z-40"
+  >
+    <div class="flex flex-col justify-center items-center h-full space-y-8">
+      <div
+        class="mobile-nav-item text-my-blue hover:text-my-green transition-colors duration-300"
+        data-section="sobre-mi"
+      >
+        <a href="#sobre-mi" class="text-4xl font-bebas"> Sobre Mí </a>
+      </div>
+
+      <div
+        class="mobile-nav-item text-my-blue hover:text-my-green transition-colors duration-300"
+        data-section="experience"
+      >
+        <a href="#experience" class="text-4xl font-bebas"> Mi trabajo </a>
+      </div>
+
+      <div
+        class="mobile-nav-item text-my-blue hover:text-my-green transition-colors duration-300"
+        data-section="contacto"
+      >
+        <a href="/contacto" class="text-4xl font-bebas"> Contacto </a>
+      </div>
+
+      <div
+        class="mobile-nav-item text-my-blue hover:text-my-green transition-colors duration-300"
+        data-section="blog"
+      >
+        <a href="#blog" class="text-4xl font-bebas"> Blog </a>
+      </div>
+    </div>
+  </div>
 </header>
 
-<style>
-    .nav-item.active {
-        color: var(--my-green, #10b981);
-    }
-    
-    .nav-item.active .nav-indicator {
-        opacity: 1 !important;
-        background-color: currentColor;
-    }
-    
-    .nav-indicator {
-        transition: opacity 0.3s ease;
-    }
-    
-    html {
-        scroll-behavior: smooth;
-    }
-    
-    /* Ajuste para el header fijo */
-    body {
-        padding-top: 80px; /* Ajusta según la altura de tu header */
-    }
+<style is:global>
+  .nav-item.active {
+    color: #10b981;
+  }
+
+  .nav-item.active .nav-indicator {
+    opacity: 1 !important;
+    background-color: #10b981;
+  }
+
+  .mobile-nav-item.active {
+    color: #10b981;
+  }
+
+  .nav-indicator {
+    transition: opacity 0.3s ease;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Hamburger Animation */
+  #hamburger-btn.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  #hamburger-btn.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  #hamburger-btn.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+
+  /* Mobile Menu Animation */
+  #mobile-menu.active {
+    transform: translateX(0) !important;
+  }
+
+  /* Prevent scrolling when menu is open */
+  body.menu-open {
+    overflow: hidden;
+  }
 </style>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const navItems = document.querySelectorAll('.nav-item');
-        const sections = document.querySelectorAll('section[id]');
-        
-        // Configuración del Intersection Observer
-        const observerOptions = {
-            root: null,
-            rootMargin: '-20% 0px -80% 0px', // Ajusta estos valores según necesites
-            threshold: 0
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const sectionId = entry.target.id;
-                const navItem = document.querySelector(`[data-section="${sectionId}"]`);
-                
-                if (entry.isIntersecting) {
-                    // Remover clase active de todos los elementos
-                    navItems.forEach(item => item.classList.remove('active'));
-                    // Añadir clase active al elemento actual
-                    if (navItem) {
-                        navItem.classList.add('active');
-                    }
-                }
-            });
-        }, observerOptions);
-        
-        // Observar todas las secciones
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-        
-        // Navegación suave para enlaces internos
-        navItems.forEach(item => {
-            const link = item.querySelector('a');
-            if (!link) return;
-            
-            const href = link.getAttribute('href');
-            
-            // Solo para enlaces internos (que empiecen con #)
-            if (href && href.startsWith('#')) {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetSection = document.querySelector(href) as HTMLElement;
-                    const header = document.querySelector('header') as HTMLElement;
-                    
-                    if (targetSection && header) {
-                        const headerHeight = header.offsetHeight;
-                        const targetPosition = targetSection.offsetTop - headerHeight - 20;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            }
-        });
-        
-        // Activar el primer elemento por defecto si no hay ninguno activo
-        const checkInitialSection = () => {
-            const activeItem = document.querySelector('.nav-item.active');
-            if (!activeItem && sections.length > 0) {
-                const firstNavItem = document.querySelector(`[data-section="${sections[0].id}"]`);
-                if (firstNavItem) {
-                    firstNavItem.classList.add('active');
-                }
-            }
-        };
-        
-        // Ejecutar después de un pequeño delay para permitir que el observer se inicialice
-        setTimeout(checkInitialSection, 100);
+  document.addEventListener("DOMContentLoaded", function () {
+    const navItems = document.querySelectorAll(".nav-item");
+    const mobileNavItems = document.querySelectorAll(".mobile-nav-item");
+    const sections = document.querySelectorAll("section[id]");
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const body = document.body;
+
+    // Mobile Menu Toggle
+    console.log("Añadiendo event listener al botón");
+    hamburgerBtn.addEventListener("click", function () {
+      console.log("¡Click detectado en hamburguesa!");
+      hamburgerBtn.classList.toggle("active");
+
+      // En lugar de toggle('active'), usa las clases de Tailwind directamente:
+      if (mobileMenu.classList.contains("translate-x-full")) {
+        mobileMenu.classList.remove("translate-x-full");
+        mobileMenu.classList.add("translate-x-0");
+      } else {
+        mobileMenu.classList.remove("translate-x-0");
+        mobileMenu.classList.add("translate-x-full");
+      }
+
+      body.classList.toggle("menu-open");
     });
+
+    console.log("Menú móvil:", document.getElementById("mobile-menu"));
+
+    // Close mobile menu when clicking on a link
+    mobileNavItems.forEach((item) => {
+      const link = item.querySelector("a");
+      if (link) {
+        link.addEventListener("click", function () {
+          hamburgerBtn.classList.remove("active");
+          // Usar las clases de Tailwind:
+          mobileMenu.classList.remove("translate-x-0");
+          mobileMenu.classList.add("translate-x-full");
+          body.classList.remove("menu-open");
+        });
+      }
+    });
+
+    // Close mobile menu when clicking outside
+    mobileMenu.addEventListener("click", function (e) {
+      if (e.target === mobileMenu) {
+        hamburgerBtn.classList.remove("active");
+        mobileMenu.classList.remove("active");
+        body.classList.remove("menu-open");
+      }
+    });
+
+    // Intersection Observer Configuration
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -80% 0px",
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const sectionId = entry.target.id;
+        const navItem = document.querySelector(
+          `.nav-item[data-section="${sectionId}"]`
+        );
+        const mobileNavItem = document.querySelector(
+          `.mobile-nav-item[data-section="${sectionId}"]`
+        );
+
+        if (entry.isIntersecting) {
+          // Remove active class from all elements
+          navItems.forEach((item) => item.classList.remove("active"));
+          mobileNavItems.forEach((item) => item.classList.remove("active"));
+
+          // Add active class to current elements
+          if (navItem) {
+            navItem.classList.add("active");
+          }
+          if (mobileNavItem) {
+            mobileNavItem.classList.add("active");
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Smooth navigation for internal links (Desktop)
+    navItems.forEach((item) => {
+      const link = item.querySelector("a");
+      if (!link) return;
+
+      const href = link.getAttribute("href");
+
+      if (href && href.startsWith("#")) {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetSection = document.querySelector(href);
+          const header = document.querySelector("header");
+
+          if (targetSection && header) {
+            const headerHeight = header.offsetHeight;
+            const targetPosition = targetSection.offsetTop - headerHeight - 20;
+
+            window.scrollTo({
+              top: targetPosition,
+              behavior: "smooth",
+            });
+          }
+        });
+      }
+    });
+
+    // Smooth navigation for internal links (Mobile)
+    mobileNavItems.forEach((item) => {
+      const link = item.querySelector("a");
+      if (!link) return;
+
+      const href = link.getAttribute("href");
+
+      if (href && href.startsWith("#")) {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetSection = document.querySelector(href);
+          const header = document.querySelector("header");
+
+          if (targetSection && header) {
+            const headerHeight = header.offsetHeight;
+            const targetPosition = targetSection.offsetTop - headerHeight - 20;
+
+            window.scrollTo({
+              top: targetPosition,
+              behavior: "smooth",
+            });
+          }
+        });
+      }
+    });
+
+    // Activate first section by default
+    const checkInitialSection = () => {
+      const activeItem = document.querySelector(".nav-item.active");
+      const activeMobileItem = document.querySelector(
+        ".mobile-nav-item.active"
+      );
+
+      if (!activeItem && !activeMobileItem && sections.length > 0) {
+        const firstNavItem = document.querySelector(
+          `.nav-item[data-section="${sections[0].id}"]`
+        );
+        const firstMobileNavItem = document.querySelector(
+          `.mobile-nav-item[data-section="${sections[0].id}"]`
+        );
+
+        if (firstNavItem) {
+          firstNavItem.classList.add("active");
+        }
+        if (firstMobileNavItem) {
+          firstMobileNavItem.classList.add("active");
+        }
+      }
+    };
+
+    setTimeout(checkInitialSection, 100);
+
+    // Handle window resize
+    window.addEventListener("resize", function () {
+      if (window.innerWidth >= 1024) {
+        // Desktop view - close mobile menu if open
+        hamburgerBtn.classList.remove("active");
+        mobileMenu.classList.remove("active");
+        body.classList.remove("menu-open");
+      }
+    });
+  });
+
+  console.log("Header script cargado");
+  console.log("Botón hamburguesa:", document.getElementById("hamburger-btn"));
 </script>

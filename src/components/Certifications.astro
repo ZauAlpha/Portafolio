@@ -1,17 +1,19 @@
 ---
+import { Image } from "astro:assets";
 interface Props {
   certificateName: string;
   description: string;
   provider: string;
   date: string;
-  image?: string;
+  image: ImageMetadata;
   link: string;
 }
 const props = Astro.props as Props;
 ---
 
 <div
-  class="bg-black p-4 mb-20 sm:p-6 lg:p-8 shadow-2xl lg:w-4xl w-fit border border-my-blue"
+  class="white-gold p-4 mb-20 sm:p-6 lg:p-8 lg:w-4xl w-fit flex flex-col
+   items-center gap-4"
 >
   <div
     class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4"
@@ -19,16 +21,16 @@ const props = Astro.props as Props;
     <div class="flex flex-col sm:flex-row sm:items-start gap-4">
       <!-- Logo/Imagen -->
       <div class="flex-shrink-0 mx-auto sm:mx-0">
-        <img
+        <Image
           src={props.image}
           alt="Logo de la empresa"
-          class="size-16 sm:size-20"
+          class="size-52 sm:size-80"
         />
       </div>
       <!-- Datos de la empresa -->
       <div class="text-center sm:text-left">
         <h1
-          class="text-white font-bebas text-2xl sm:text-3xl lg:text-4xl leading-tight"
+          class="text-neutral-800 font-bebas text-2xl sm:text-3xl lg:text-4xl leading-tight"
         >
           {props.certificateName}
         </h1>
@@ -42,10 +44,27 @@ const props = Astro.props as Props;
         >
           {props.date}
         </p>
+        <p
+          class="font-inter text-gray-300 text-sm sm:text-base leading-relaxed bg-gray-950/50 p-4 rounded-md"
+        >
+          {props.description}
+        </p>
+        <a
+          href={props.link}
+          class="bg-black p-4 rounded-full font-source font-bold text-white shadow-2xl shadow-gray-900 hover:scale-105 transform transition-all duration-200 ease-in-out active:bg-gray-800 active:scale-95 flex items-center justify-center active:shadow-none m-4"
+          target="_blank"
+          rel="noopener noreferrer">Comprobar Certificación</a
+        >
       </div>
     </div>
   </div>
-  <p class="font-inter text-gray-300 text-sm sm:text-base leading-relaxed">
-    {props.description}
-  </p>
 </div>
+<style>
+  .gold-solid {
+    background: linear-gradient(135deg, #ffd700, #ffc107, #ff8f00, #ffd700);
+  }
+
+  .white-gold {
+    background: linear-gradient(135deg, #f8f8ff, #e6e6fa, #d3d3d3, #f8f8ff);
+  }
+</style>
