@@ -180,18 +180,37 @@
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const navItems = document.querySelectorAll(".nav-item");
-    const mobileNavItems = document.querySelectorAll(".mobile-nav-item");
-    const sections = document.querySelectorAll("section[id]");
-    const hamburgerBtn = document.getElementById("hamburger-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-    const body = document.body;
+  // Interfaces para configuración
+  interface ObserverOptions {
+    root: null;
+    rootMargin: string;
+    threshold: number;
+  }
+
+  // Tipos personalizados
+  type NavElement = HTMLElement & { dataset: { section?: string } };
+
+  document.addEventListener("DOMContentLoaded", function (): void {
+    const navItems: NodeListOf<NavElement> =
+      document.querySelectorAll(".nav-item");
+    const mobileNavItems: NodeListOf<NavElement> =
+      document.querySelectorAll(".mobile-nav-item");
+    const sections: NodeListOf<HTMLElement> =
+      document.querySelectorAll("section[id]");
+    const hamburgerBtn: HTMLElement | null =
+      document.getElementById("hamburger-btn");
+    const mobileMenu: HTMLElement | null =
+      document.getElementById("mobile-menu");
+    const body: HTMLElement = document.body;
+
+    // Verificaciones de elementos críticos
+    if (!hamburgerBtn || !mobileMenu) {
+      console.error("Elementos del menú móvil no encontrados");
+      return;
+    }
 
     // Mobile Menu Toggle
-    console.log("Añadiendo event listener al botón");
-    hamburgerBtn.addEventListener("click", function () {
-      console.log("¡Click detectado en hamburguesa!");
+    hamburgerBtn.addEventListener("click", function (): void {
       hamburgerBtn.classList.toggle("active");
 
       // En lugar de toggle('active'), usa las clases de Tailwind directamente:
@@ -206,13 +225,11 @@
       body.classList.toggle("menu-open");
     });
 
-    console.log("Menú móvil:", document.getElementById("mobile-menu"));
-
     // Close mobile menu when clicking on a link
-    mobileNavItems.forEach((item) => {
-      const link = item.querySelector("a");
+    mobileNavItems.forEach((item: NavElement): void => {
+      const link: HTMLAnchorElement | null = item.querySelector("a");
       if (link) {
-        link.addEventListener("click", function () {
+        link.addEventListener("click", function (): void {
           hamburgerBtn.classList.remove("active");
           // Usar las clases de Tailwind:
           mobileMenu.classList.remove("translate-x-0");
@@ -223,7 +240,7 @@
     });
 
     // Close mobile menu when clicking outside
-    mobileMenu.addEventListener("click", function (e) {
+    mobileMenu.addEventListener("click", function (e: MouseEvent): void {
       if (e.target === mobileMenu) {
         hamburgerBtn.classList.remove("active");
         mobileMenu.classList.remove("active");
@@ -232,59 +249,65 @@
     });
 
     // Intersection Observer Configuration
-    const observerOptions = {
+    const observerOptions: ObserverOptions = {
       root: null,
       rootMargin: "-20% 0px -80% 0px",
       threshold: 0,
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const sectionId = entry.target.id;
-        const navItem = document.querySelector(
-          `.nav-item[data-section="${sectionId}"]`
-        );
-        const mobileNavItem = document.querySelector(
-          `.mobile-nav-item[data-section="${sectionId}"]`
-        );
+    const observer: IntersectionObserver = new IntersectionObserver(
+      (entries: IntersectionObserverEntry[]): void => {
+        entries.forEach((entry: IntersectionObserverEntry): void => {
+          const sectionId: string = entry.target.id;
+          const navItem: NavElement | null = document.querySelector(
+            `.nav-item[data-section="${sectionId}"]`
+          );
+          const mobileNavItem: NavElement | null = document.querySelector(
+            `.mobile-nav-item[data-section="${sectionId}"]`
+          );
 
-        if (entry.isIntersecting) {
-          // Remove active class from all elements
-          navItems.forEach((item) => item.classList.remove("active"));
-          mobileNavItems.forEach((item) => item.classList.remove("active"));
+          if (entry.isIntersecting) {
+            // Remove active class from all elements
+            navItems.forEach((item: NavElement): void =>
+              item.classList.remove("active")
+            );
+            mobileNavItems.forEach((item: NavElement): void =>
+              item.classList.remove("active")
+            );
 
-          // Add active class to current elements
-          if (navItem) {
-            navItem.classList.add("active");
+            // Add active class to current elements
+            if (navItem) {
+              navItem.classList.add("active");
+            }
+            if (mobileNavItem) {
+              mobileNavItem.classList.add("active");
+            }
           }
-          if (mobileNavItem) {
-            mobileNavItem.classList.add("active");
-          }
-        }
-      });
-    }, observerOptions);
+        });
+      },
+      observerOptions
+    );
 
     // Observe all sections
-    sections.forEach((section) => {
+    sections.forEach((section: HTMLElement): void => {
       observer.observe(section);
     });
 
-    // Smooth navigation for internal links (Desktop)
-    navItems.forEach((item) => {
-      const link = item.querySelector("a");
-      if (!link) return;
-
-      const href = link.getAttribute("href");
+    // Función helper para navegación suave
+    const handleSmoothNavigation = (link: HTMLAnchorElement): void => {
+      const href: string | null = link.getAttribute("href");
 
       if (href && href.startsWith("#")) {
-        link.addEventListener("click", function (e) {
+        link.addEventListener("click", function (e: MouseEvent): void {
           e.preventDefault();
-          const targetSection = document.querySelector(href);
-          const header = document.querySelector("header");
+          const targetSection: HTMLElement | null =
+            document.querySelector(href);
+          const header: HTMLElement | null = document.querySelector("header");
 
           if (targetSection && header) {
-            const headerHeight = header.offsetHeight;
-            const targetPosition = targetSection.offsetTop - headerHeight - 20;
+            const headerHeight: number = header.offsetHeight;
+            const targetPosition: number =
+              targetSection.offsetTop - headerHeight - 20;
 
             window.scrollTo({
               top: targetPosition,
@@ -292,48 +315,40 @@
             });
           }
         });
+      }
+    };
+
+    // Smooth navigation for internal links (Desktop)
+    navItems.forEach((item: NavElement): void => {
+      const link: HTMLAnchorElement | null = item.querySelector("a");
+      if (link) {
+        handleSmoothNavigation(link);
       }
     });
 
     // Smooth navigation for internal links (Mobile)
-    mobileNavItems.forEach((item) => {
-      const link = item.querySelector("a");
-      if (!link) return;
-
-      const href = link.getAttribute("href");
-
-      if (href && href.startsWith("#")) {
-        link.addEventListener("click", function (e) {
-          e.preventDefault();
-          const targetSection = document.querySelector(href);
-          const header = document.querySelector("header");
-
-          if (targetSection && header) {
-            const headerHeight = header.offsetHeight;
-            const targetPosition = targetSection.offsetTop - headerHeight - 20;
-
-            window.scrollTo({
-              top: targetPosition,
-              behavior: "smooth",
-            });
-          }
-        });
+    mobileNavItems.forEach((item: NavElement): void => {
+      const link: HTMLAnchorElement | null = item.querySelector("a");
+      if (link) {
+        handleSmoothNavigation(link);
       }
     });
 
     // Activate first section by default
-    const checkInitialSection = () => {
-      const activeItem = document.querySelector(".nav-item.active");
-      const activeMobileItem = document.querySelector(
+    const checkInitialSection = (): void => {
+      const activeItem: NavElement | null =
+        document.querySelector(".nav-item.active");
+      const activeMobileItem: NavElement | null = document.querySelector(
         ".mobile-nav-item.active"
       );
 
       if (!activeItem && !activeMobileItem && sections.length > 0) {
-        const firstNavItem = document.querySelector(
-          `.nav-item[data-section="${sections[0].id}"]`
+        const firstSection: HTMLElement = sections[0];
+        const firstNavItem: NavElement | null = document.querySelector(
+          `.nav-item[data-section="${firstSection.id}"]`
         );
-        const firstMobileNavItem = document.querySelector(
-          `.mobile-nav-item[data-section="${sections[0].id}"]`
+        const firstMobileNavItem: NavElement | null = document.querySelector(
+          `.mobile-nav-item[data-section="${firstSection.id}"]`
         );
 
         if (firstNavItem) {
@@ -348,7 +363,7 @@
     setTimeout(checkInitialSection, 100);
 
     // Handle window resize
-    window.addEventListener("resize", function () {
+    window.addEventListener("resize", function (): void {
       if (window.innerWidth >= 1024) {
         // Desktop view - close mobile menu if open
         hamburgerBtn.classList.remove("active");
@@ -357,7 +372,4 @@
       }
     });
   });
-
-  console.log("Header script cargado");
-  console.log("Botón hamburguesa:", document.getElementById("hamburger-btn"));
 </script>
