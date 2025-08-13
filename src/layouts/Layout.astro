@@ -12,16 +12,17 @@ import Hero from "../components/Hero.astro";
 import Certifications from "../components/Certifications.astro";
 import aws_certification_logo from "../assets/aws_certified.png";
 import Footer from "../components/Footer.astro";
+import SEO from "../components/SEO.astro";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="/favicon.png" type="image/x-icon" />
-
-    <title>Zauriel Espejel - Backend Developer</title>
+    <SEO
+      title="Zauriel Espejel - Backend Developer"
+      description="Soy Zauriel, un desarrollador backend apasionado por la tecnología y la innovación."
+      image="/path/to/image.jpg"
+    />
     <script type="module">
       import { startTypewriterLoop } from "../src/utils/script";
       document.addEventListener("DOMContentLoaded", () => {
