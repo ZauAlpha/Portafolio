@@ -2,15 +2,7 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 // Ensure the file exists at the correct path or update the path if necessary
-import bluebubble from "../assets/bluebubble.svg";
-import Experience from "../components/Experience.astro";
-import blackshiip_logo from "../assets/blackshiip.png";
-import coparmex_logo from "../assets/coparmex_logo.png";
-import tsystem_logo from "../assets/tsystems_logo.png";
-import foto from "../assets/foto.png";
-import Hero from "../components/Hero.astro";
-import Certifications from "../components/Certifications.astro";
-import aws_certification_logo from "../assets/aws_certified.png";
+
 import Footer from "../components/Footer.astro";
 import SEO from "../components/SEO.astro";
 ---
@@ -43,92 +35,7 @@ import SEO from "../components/SEO.astro";
 
   <body class="bg-neutral-800">
     <Header />
-    <main>
-      <section id="sobre-mi">
-        <Hero />
-      </section>
-      <p class="text-white font-source lg:mx-28 mx-10 lg:mt-10">
-        Soy Zauriel, me puedes llamar Zau siempre me a interesado la tecnología
-        para solucionar los problemas de las personas y hacer un mejor mundo y
-        un México mejor. Me considero una persona con la capacidad para liderar
-        y coordinar equipos multidisciplinarios, en este espacio puedes
-        encontrar información sobre mí, opiniones, experiencias y conocimientos
-        en mi blog.
-        <br />
-        <br />
-        Mi zona de interés incluye desarrollo backend, gestión de proyectos y computo
-        en la nube.
-        <br />
-        <br />
-        Me gradué de <strong class="text-orange-400"
-          >Ingeniería en sistemas computacionales</strong
-        > en la <a
-          class="text-my-green"
-          href="https://www.udlap.mx/ofertaacademica/SistemasComputacionales"
-          >Universidad de las Américas Puebla</a
-        > en 2025 y ahora me desempeño como desarrollador de software enfocado en
-        backend.
-      </p>
-      <section id="experience" class="flex flex-col items-center gap-y-4 my-12">
-        <h1 class="text-white text-5xl font-inter my-10">Experiencia</h1>
-        <Experience
-          enterpriseName="Blackshiip"
-          image={blackshiip_logo}
-          description="Desarrollo de software - Practicas profesionales"
-          date="Febrero 2024 - Presente"
-          location="Remoto"
-          responsibilities={[
-            "Implementación de la estructura metodológica de los libros digitales en ClickUp, utilizando jerarquías, subtareas y dependencias funcionales.",
-            "Coordinación de pruebas de validación con usuarios para asegurar la usabilidad y reutilización de la plantilla documental.",
-            "Propuestas para el diseño de una landing page y automatización de flujos entre plataformas.",
-            "Análisis comparativo de herramientas de desarrollo web (WordPress, servicios de hosting y automatización), evaluando viabilidad técnica y presupuestal.",
-            "Aplicación de conocimientos en diseño UI, entornos web y automatización para orientar decisiones técnicas.",
-          ]}
-          skills={[
-            "Integración de plataformas",
-            "Diseño de flujos de trabajo",
-            "Evaluación de herramientas web",
-            "Documentación técnica",
-            "Seguridad y privacidad de datos",
-            "Automatización de procesos",
-          ]}
-        />
-        <Experience
-          enterpriseName="Coparmex Puebla"
-          image={coparmex_logo}
-          description="Dirección de agenda pública y vinculación – Servicio Social."
-          date="Julio 2024–Diciembre 2024"
-          location="Puebla, México"
-          responsibilities={[
-            "Mantenimiento y actualización de sistema de registro del Summit de Innovación y Emprendimiento 2024.",
-            "Estructuramiento, análisis de datos y reporte de observación electoral 2024.",
-            "Depuración y análisis de reportes basados en datos del Summit de Innovación y Emprendimiento 2024.",
-          ]}
-        />
-        <Experience
-          enterpriseName="T Systems de México"
-          image={tsystem_logo}
-          description="Automotive customer service – Prácticas Profesionales"
-          date="Junio 2023–Julio 2023"
-          location="Puebla, México"
-          responsibilities={[
-            "Apoyo y continuidad al servicio al cliente, manteniendo la información actualizada al momento.",
-            "Desarrollo de herramientas para la agilización del flujo de trabajo con los clientes.",
-          ]}
-        />
-      </section>
-      <section id="certificaciones" class="flex flex-col items-center gap-y-4">
-        <h1 class="text-white text-5xl font-inter my-10">Certificaciones</h1>
-        <Certifications
-          certificateName="AWS Cloud Practitioner"
-          provider="Amazon Web Services Training and Certification"
-          date="Mayo 2025 - Mayo 2028"
-          description="La certificación AWS Certified Cloud Practitioner valida un conocimiento fundamental de los servicios, la terminología y la nube de AWS."
-          image={aws_certification_logo}
-          link="https://www.credly.com/badges/860b74aa-876f-42b1-b13e-886b92744f31/public_url"
-        />
-      </section>
-    </main>
+    <slot />
     <Footer />
   </body>
 </html>
