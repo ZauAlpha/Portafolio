@@ -19,16 +19,14 @@ const { project } = Astro.props;
 ---
 
 <div
-  class="bg-black p-4 sm:p-6 lg:p-8 w-full max-w-5xl mx-auto flex flex-col
+  class="bg-black p-4 sm:p-6 lg:p-8 w-fit lg:w-4xl mx-auto flex flex-col
    items-center gap-4 shadow-2xl"
 >
-  <div
-    class="flex flex-col lg:flex-row items-center lg:justify-between gap-4 w-full"
-  >
+  <div class="flex flex-col lg:flex-row items-center lg:justify-between gap-4">
     <!-- Logo/Imagen -->
 
     <!-- Datos del proyecto -->
-    <div class="text-center sm:text-left gap-y-2 flex flex-col w-full">
+    <div class="text-center sm:text-left gap-y-2 flex flex-col">
       <h1
         class="text-white font-bebas text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight"
       >
@@ -46,7 +44,7 @@ const { project } = Astro.props;
         )
       }
       <p
-        class="font-inter w-full text-base text-neutral-50 mt-1 text-center sm:text-left"
+        class="font-inter max-w-xl text-base text-neutral-50 mt-1 mx-auto text-center sm:text-left"
       >
         {project.description}
       </p>
