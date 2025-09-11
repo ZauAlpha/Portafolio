@@ -57,7 +57,7 @@
 
     <div
       class="nav-item w-30 flex flex-col text-my-blue hover:text-my-green"
-      data-section="blog"
+      data-section="/blog"
     >
       <a
         href="/blog"
@@ -251,6 +251,23 @@
         body.classList.remove("menu-open");
       }
     });
+
+    if (window.location.pathname.startsWith("/blog")) {
+      //Si estamos en blog activa la sección blog
+      const blogNavItem: NavElement | null = document.querySelector(
+        '.nav-item[data-section="/blog"]'
+      );
+      const mobileBlogNavItem: NavElement | null = document.querySelector(
+        '.mobile-nav-item[data-section="blog"]'
+      );
+      if (blogNavItem) {
+        blogNavItem.classList.add("active");
+      }
+      if (mobileBlogNavItem) {
+        mobileBlogNavItem.classList.add("active");
+      }
+      return;
+    }
 
     // Intersection Observer Configuration
     const observerOptions: ObserverOptions = {
