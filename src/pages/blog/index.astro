@@ -1,7 +1,47 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog", ({ data }) => {
+  return !data.draft;
+});
+
+// Ordenar por fecha de publicación
+posts.sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
 ---
 
 <Layout>
-  <h1>Hola</h1>
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-4xl font-bold text-white mb-8">Blog</h1>
+    <div class="grid gap-8">
+      {
+        posts.map((post) => (
+          <article class="bg-neutral-900 p-6 rounded-lg">
+            <h2 class="text-2xl font-bold text-white mb-2">
+              <a href={`/blog/${post.slug}`} class="hover:text-my-blue">
+                {post.data.title}
+              </a>
+            </h2>
+            <div class="text-gray-400 mb-4">
+              <time datetime={post.data.publishDate.toISOString()}>
+                {post.data.publishDate.toLocaleDateString()}
+              </time>
+            </div>
+            <p class="text-gray-300 mb-4">{post.data.description}</p>
+            {post.data.tags && (
+              <div class="flex gap-2">
+                {post.data.tags.map((tag) => (
+                  <span class="bg-gray-800 text-sm px-2 py-1 rounded text-gray-300">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </main>
 </Layout>
