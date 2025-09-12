@@ -1,0 +1,32 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+
+// Define the type for our blog entries
+type BlogEntry = CollectionEntry<"blog">;
+
+// Define the props interface
+interface Props {
+  entry: BlogEntry;
+}
+
+// Esta función se ejecuta en build time
+export async function getStaticPaths() {
+  // Obtiene todos los posts del blog
+  const blogEntries = await getCollection("blog");
+
+  // Retorna un array de objetos con params y props
+  return blogEntries.map((entry: BlogEntry) => ({
+    params: { slug: entry.slug }, // Define el parámetro dinámico
+    props: { entry }, // Props que recibirá el componente
+  }));
+}
+
+// Recibe el entry como prop
+const { entry } = Astro.props as Props;
+const { Content } = await entry.render();
+---
+
+<BlogLayout frontmatter={entry.data}>
+  <Content />
+</BlogLayout>

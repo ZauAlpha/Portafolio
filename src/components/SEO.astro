@@ -6,6 +6,7 @@ export interface Props {
 }
 const props = Astro.props as Props;
 const imageURL = new URL(props.image, Astro.site);
+const token = import.meta.env.PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN;
 ---
 
 <title>{props.title}</title>
@@ -21,3 +22,11 @@ const imageURL = new URL(props.image, Astro.site);
 <meta property="og:image" content={imageURL} />
 <meta property="og:url" content={Astro.site} />
 <meta property="og:site_name" content="Your Site Name" />
+<!-- Cloudflare Web Analytics -->
+<script
+  defer
+  src="https://static.cloudflareinsights.com/beacon.min.js"
+  data-cf-beacon={`{"token": "${token}"}`}
+></script>
+
+<!-- End Cloudflare Web Analytics -->

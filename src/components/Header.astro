@@ -12,7 +12,7 @@
       data-section="sobre-mi"
     >
       <a
-        href="index.html#sobre-mi"
+        href="/index.html#sobre-mi"
         class="w-full text-3xl text-center text-inherit font-bebas"
       >
         Sobre Mí
@@ -28,7 +28,7 @@
       data-section="experience"
     >
       <a
-        href="index.html#experience"
+        href="/index.html#experience"
         class="w-full text-3xl text-center text-inherit font-bebas"
       >
         Mi trabajo
@@ -44,7 +44,7 @@
       data-section="projects"
     >
       <a
-        href="index.html#projects"
+        href="/index.html#projects"
         class="w-full text-3xl text-center text-inherit font-bebas"
       >
         Proyectos
@@ -57,7 +57,7 @@
 
     <div
       class="nav-item w-30 flex flex-col text-my-blue hover:text-my-green"
-      data-section="blog"
+      data-section="/blog"
     >
       <a
         href="/blog"
@@ -106,14 +106,16 @@
         class="mobile-nav-item text-my-blue hover:text-my-green transition-colors duration-300"
         data-section="sobre-mi"
       >
-        <a href="index.html#sobre-mi" class="text-4xl font-bebas"> Sobre Mí </a>
+        <a href="/index.html#sobre-mi" class="text-4xl font-bebas">
+          Sobre Mí
+        </a>
       </div>
 
       <div
         class="mobile-nav-item text-my-blue hover:text-my-green transition-colors duration-300"
         data-section="experience"
       >
-        <a href="index.html#experience" class="text-4xl font-bebas">
+        <a href="/index.html#experience" class="text-4xl font-bebas">
           Mi trabajo
         </a>
       </div>
@@ -122,7 +124,7 @@
         class="mobile-nav-item text-my-blue hover:text-my-green transition-colors duration-300"
         data-section="projects"
       >
-        <a href="index.html#projects" class="text-4xl font-bebas">
+        <a href="/index.html#projects" class="text-4xl font-bebas">
           Proyectos
         </a>
       </div>
@@ -251,6 +253,23 @@
         body.classList.remove("menu-open");
       }
     });
+
+    if (window.location.pathname.startsWith("/blog")) {
+      //Si estamos en blog activa la sección blog
+      const blogNavItem: NavElement | null = document.querySelector(
+        '.nav-item[data-section="/blog"]'
+      );
+      const mobileBlogNavItem: NavElement | null = document.querySelector(
+        '.mobile-nav-item[data-section="blog"]'
+      );
+      if (blogNavItem) {
+        blogNavItem.classList.add("active");
+      }
+      if (mobileBlogNavItem) {
+        mobileBlogNavItem.classList.add("active");
+      }
+      return;
+    }
 
     // Intersection Observer Configuration
     const observerOptions: ObserverOptions = {
