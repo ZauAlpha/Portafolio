@@ -1,0 +1,124 @@
+.blog-article {
+  color: white; /* text-gray-800 */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.75;
+  max-width: 140ch;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.blog-article h1,
+.blog-article h2,
+.blog-article h3,
+.blog-article h4 {
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  scroll-margin-top: 5rem;
+}
+
+.blog-article h1 {
+  font-size: 2.5rem;
+  border-bottom: 3px solid white; /* azul */
+  padding-bottom: 0.5rem;
+}
+
+.blog-article h2 {
+  font-size: 1.875rem;
+  border-left: 4px solid white;
+  padding-left: 0.5rem;
+  margin-inline: auto;
+  text-align: center;
+  display: block;
+  width: fit-content;
+}
+
+.blog-article h3 {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.blog-article p {
+  margin: 1rem 0;
+}
+
+.blog-article strong {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.blog-article em {
+  font-style: italic;
+  color: oklch(0.6623 0.179 248.8);
+}
+
+.blog-article a {
+  color: white;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.blog-article a:hover {
+  color: white;
+}
+
+.blog-article ul {
+  list-style: disc inside;
+  margin: 1rem 0;
+  padding-left: 1rem;
+}
+
+.blog-article ol {
+  list-style: decimal inside;
+  margin: 1rem 0;
+  padding-left: 1rem;
+}
+
+.blog-article li {
+  margin: 0.5rem 0;
+}
+
+.blog-article blockquote {
+  padding: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  font-style: italic;
+  color: #1e293b;
+  background: linear-gradient(135deg, #e5e4e2, #d3d3d3, #c0c0c0, #e5e4e2);
+  border-radius: 1rem;
+}
+
+.blog-article code {
+  background: #f3f4f6;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.9rem;
+  font-family: "Fira Code", monospace;
+  color: #dc2626;
+}
+
+.blog-article pre {
+  background: #1e293b; /* gris oscuro */
+  color: #f9fafb;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.blog-article pre code {
+  background: none;
+  color: inherit;
+  font-size: 0.95rem;
+}
+
+.blog-article hr {
+  border: none;
+  border-top: 2px dashed #d1d5db;
+  margin: 2rem 0;
+}
+
+.blog-article input[type="checkbox"] {
+  accent-color: white;
+  margin-right: 0.5rem;
+}
