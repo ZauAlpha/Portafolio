@@ -11,7 +11,7 @@ const blogSchema = z.object({
 
   // Campos opcionales
   updateDate: z.date().optional(),
-  author: z.string().default("Tu Nombre"),
+  author: z.string().default("Zauriel Jesús Espejel Cervantes"),
 
   // Arrays
   tags: z.array(z.string()).max(10, "Máximo 10 tags por post"),
@@ -21,28 +21,22 @@ const blogSchema = z.object({
     .optional(),
 
   // Imágenes
-  image: z.string().optional(),
+  image: z.string(),
   imageAlt: z.string().optional(),
+  footNoteImage: z.string().optional(),
 
   // Estados y configuraciones
   draft: z.boolean().default(false),
-  featured: z.boolean().default(false),
 
   // SEO
   seoTitle: z.string().optional(),
   seoDescription: z.string().optional(),
-
-  // Configuración del post
-  tableOfContents: z.boolean().default(true),
-  comments: z.boolean().default(true),
 
   // Información adicional
   readingTime: z.number().optional(), // minutos estimados
   difficulty: z.enum(["beginner", "intermediate", "advanced"]).optional(),
 
   // Enlaces relacionados
-  canonicalUrl: z.string().url().optional(),
-  relatedPosts: z.array(z.string()).max(5).optional(), // slugs de posts relacionados
 });
 
 // =============================================

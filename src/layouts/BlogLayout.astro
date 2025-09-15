@@ -1,6 +1,8 @@
 ---
 import Layout from "./Layout.astro";
 import type { CollectionEntry } from "astro:content";
+import "../styles/blog.css";
+import { Image } from "astro:assets";
 
 interface Props {
   frontmatter: CollectionEntry<"blog">["data"];
@@ -10,18 +12,35 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout>
-  <article
-    class="prose prose-invert prose-lg mt-12 mx-auto px-4 py-12 max-w-3xl
-  [&_h1]:text-4xl [&_h1]:mb-8 [&_h1]:font-bold [&_h1]:text-white
-  [&_h2]:text-3xl [&_h2]:mt-8 [&_h2]:mb-4 [&_h2]:font-bold [&_h2]:text-white
-  prose-p:text-gray-300
-  prose-a:text-blue-400
-  prose-a:no-underline hover:prose-a:text-blue-300
-  
-  prose-blockquote:border-l-4 prose-blockquote:border-blue-500
-  prose-img:rounded-xl
- text-white"
-  >
-    <slot />
-  </article>
+  <main class="mt-24 grow">
+    <h1
+      class="text-4xl sm:text-5xl md:text-6xl font-bebas text-center text-gray-200"
+    >
+      {frontmatter.title}
+    </h1>
+    <Image
+      src={frontmatter.image}
+      width={800}
+      height={400}
+      alt={`Imagen del post ${frontmatter.title}`}
+      class="w-full h-auto max-w-2xl mx-auto mt-8 rounded-lg shadow-lg sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl"
+    />
+
+    {
+      frontmatter.footNoteImage && (
+        <div class="mt-4 flex justify-center">
+          {frontmatter.footNoteImage && (
+            <div
+              class="text-gray-400 text-sm mb-2 italic"
+              set:html={frontmatter.footNoteImage}
+            />
+          )}
+        </div>
+      )
+    }
+
+    <article class="blog-article">
+      <slot />
+    </article>
+  </main>
 </Layout>
